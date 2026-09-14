@@ -242,10 +242,10 @@ const ContactPage = () => {
               Find Us on Google Maps
             </h3>
             <a
-              href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1274051,17z"
+              href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1248302,17z/data=!3m1!4b1!4m6!3m5!1s0x395fc7cb2ccf26cb:0xae495116baa823f1!8m2!3d22.2903243!4d73.1274051!16s%2Fg%2F11z6vvg6rx"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2c7a94] font-['Inter'] text-[13px] font-semibold hover:underline flex items-center gap-1"
+              className="text-[#2c7a94] font-['Inter'] text-[13px] font-semibold hover:underline flex items-center gap-1 shrink-0"
             >
               Open in Google Maps App
               <span className="material-symbols-outlined text-[16px]">open_in_new</span>
@@ -255,7 +255,7 @@ const ContactPage = () => {
           <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-gray-100">
             <iframe
               title="Sharnam Clinic Google Map Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.684123456789!2d73.1274051!3d22.2903243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc88456789abc%3A0x123456789abcdef!2sSharnam%20Clinic!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.684110825316!2d73.1248302!3d22.2903243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc7cb2ccf26cb%3A0xae495116baa823f1!2sSharnam%20Clinic!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

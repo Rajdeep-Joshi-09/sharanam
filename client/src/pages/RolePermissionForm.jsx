@@ -197,22 +197,22 @@ const RolePermissionForm = () => {
 
           {/* Permissions Grid */}
           {selectedUserTypeId && menus.length > 0 && (
-            <div className="border border-[#E7E7E7] rounded-xl overflow-hidden bg-surface-container-lowest mb-xl">
-              
-              {/* Header Row */}
-              <div className="grid grid-cols-5 gap-4 p-md bg-surface-container border-b border-[#E7E7E7] font-label-md text-on-surface-variant">
-                <div className="col-span-2">Menu Name</div>
-                <div className="text-center">Write</div>
-                <div className="text-center">Edit</div>
-                <div className="text-center">Delete</div>
-              </div>
+            <div className="border border-[#E7E7E7] rounded-xl overflow-x-auto touch-scroll-x bg-surface-container-lowest mb-xl">
+              <div className="min-w-[580px]">
+                {/* Header Row */}
+                <div className="grid grid-cols-5 gap-4 p-md bg-surface-container border-b border-[#E7E7E7] font-label-md text-on-surface-variant">
+                  <div className="col-span-2">Menu Name</div>
+                  <div className="text-center">Write</div>
+                  <div className="text-center">Edit</div>
+                  <div className="text-center">Delete</div>
+                </div>
 
-              {/* Menu Rows */}
-              {menus.map((menu, index) => {
-                const perms = permissions[menu.id] || { isRead: 0, isWrite: 0, isEdit: 0, isDelete: 0 };
-                
-                return (
-                  <div key={menu.id} className={`grid grid-cols-5 gap-4 p-md items-center ${index !== menus.length - 1 ? 'border-b border-[#E7E7E7]' : ''}`}>
+                {/* Menu Rows */}
+                {menus.map((menu, index) => {
+                  const perms = permissions[menu.id] || { isRead: 0, isWrite: 0, isEdit: 0, isDelete: 0 };
+                  
+                  return (
+                    <div key={menu.id} className={`grid grid-cols-5 gap-4 p-md items-center ${index !== menus.length - 1 ? 'border-b border-[#E7E7E7]' : ''}`}>
                     
                     {/* Menu Name + Read Checkbox */}
                     <div className="col-span-2 flex items-center gap-md">
@@ -266,6 +266,7 @@ const RolePermissionForm = () => {
                   </div>
                 );
               })}
+              </div>
             </div>
           )}
 

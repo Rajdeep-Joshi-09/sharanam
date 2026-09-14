@@ -71,31 +71,31 @@ const BookAppointmentPage = () => {
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
   return (
-    <div ref={pageRef} className="bg-[#faf7f5] pb-20 text-[#1f2937]">
+    <div ref={pageRef} className="bg-[#faf7f5] pb-16 sm:pb-20 text-[#1f2937]">
       {/* Hero */}
-      <header className="bg-white py-12 border-b border-gray-200 px-6">
+      <header className="bg-white py-8 sm:py-12 border-b border-gray-200 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center reveal active">
-          <span className="text-[#cc3b38] font-bold font-['Inter'] text-[13px] tracking-widest uppercase mb-2 block">
+          <span className="text-[#cc3b38] font-bold font-['Inter'] text-[12px] sm:text-[13px] tracking-widest uppercase mb-2 block">
             Sharnam Clinic • Vadodara
           </span>
-          <h1 className="font-['Playfair_Display'] text-[34px] md:text-[44px] font-bold text-[#1f2937] mb-3">
+          <h1 className="font-['Playfair_Display'] text-[26px] sm:text-[34px] md:text-[44px] font-bold text-[#1f2937] mb-2 sm:mb-3">
             Book Your Appointment & View Timings
           </h1>
-          <p className="font-['Inter'] text-[16px] text-[#4b5563] leading-relaxed">
+          <p className="font-['Inter'] text-[14px] sm:text-[16px] text-[#4b5563] leading-relaxed">
             Schedule a constitutional health consultation with <strong className="text-[#1f2937]">Dr. Dhairya Urmish Mehta</strong> (BHMS, C.C.H, B.L.S).
           </p>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         {/* Left Column: Complete Interactive Appointment Form */}
         <div className="lg:col-span-7 space-y-6">
           {/* Step Progress Bar */}
           <div className="flex items-center justify-between mb-4 reveal active">
             {['1. Speciality', '2. Schedule', '3. Patient Details'].map((label, i) => (
-              <div key={label} className="flex items-center gap-2 flex-1">
+              <div key={label} className="flex items-center gap-1.5 sm:gap-2 flex-1">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center font-['Inter'] text-[13px] font-bold transition-colors ${
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-['Inter'] text-[12px] sm:text-[13px] font-bold transition-colors shrink-0 ${
                     step > i + 1
                       ? 'bg-[#2c7a94] text-white'
                       : step === i + 1
@@ -103,21 +103,21 @@ const BookAppointmentPage = () => {
                       : 'bg-gray-200 text-gray-600'
                   }`}
                 >
-                  {step > i + 1 ? <span className="material-symbols-outlined text-[16px]">check</span> : i + 1}
+                  {step > i + 1 ? <span className="material-symbols-outlined text-[15px]">check</span> : i + 1}
                 </div>
                 <span
-                  className={`hidden sm:block font-['Inter'] text-[13px] font-semibold ${
-                    step === i + 1 ? 'text-[#cc3b38]' : 'text-gray-500'
+                  className={`text-[11px] sm:text-[13px] font-['Inter'] font-semibold ${
+                    step === i + 1 ? 'text-[#cc3b38]' : 'text-gray-500 hidden xs:inline sm:inline'
                   }`}
                 >
                   {label}
                 </span>
-                {i < 2 && <div className={`flex-1 h-0.5 mx-2 ${step > i + 1 ? 'bg-[#2c7a94]' : 'bg-gray-200'}`} />}
+                {i < 2 && <div className={`flex-1 h-0.5 mx-1 sm:mx-2 ${step > i + 1 ? 'bg-[#2c7a94]' : 'bg-gray-200'}`} />}
               </div>
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-[32px] border border-gray-200 shadow-md reveal active">
+          <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-gray-200 shadow-md reveal active">
             {/* Step 1: Speciality */}
             {step === 1 && (
               <div className="space-y-6">
@@ -195,13 +195,13 @@ const BookAppointmentPage = () => {
                   <label className="block font-['Inter'] text-[14px] font-bold text-[#1f2937] mb-2">
                     Available Time Slot
                   </label>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-2.5">
                     {timeSlots.map((slot) => (
                       <button
                         key={slot}
                         type="button"
                         onClick={() => setFormData({ ...formData, time: slot })}
-                        className={`py-2.5 px-3 rounded-xl font-['Inter'] text-[13px] font-medium transition-all ${
+                        className={`py-2.5 px-2.5 sm:px-3 rounded-xl font-['Inter'] text-[12px] sm:text-[13px] font-medium transition-all text-center ${
                           formData.time === slot
                             ? 'bg-[#2c7a94] text-white font-bold shadow-md'
                             : 'bg-[#faf7f5] text-[#1f2937] border border-gray-200 hover:border-[#2c7a94]'
@@ -324,9 +324,9 @@ const BookAppointmentPage = () => {
           </form>
         </div>
 
-        {/* Right Column: FULL CLINIC TIMINGS SCHEDULE (THIS IS THE ONLY PLACE TIMINGS ARE SHOWN IN FULL) */}
+        {/* Right Column: FULL CLINIC TIMINGS SCHEDULE */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white p-8 rounded-[32px] border border-gray-200 shadow-md reveal active">
+          <div className="bg-white p-5 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-gray-200 shadow-md reveal active">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
               <div className="w-12 h-12 rounded-2xl bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center shrink-0">
                 <span className="material-symbols-outlined text-[28px]">schedule</span>

@@ -146,7 +146,7 @@ const MenuForm = () => {
         </h2>
       </div>
 
-      <div className="glass-card p-xl rounded-[24px]">
+      <div className="glass-card p-md sm:p-xl rounded-[16px] sm:rounded-[24px]">
         {error && (
           <div className="mb-lg p-md bg-error-container text-on-error-container rounded-lg font-body-md">
             {error}
@@ -333,7 +333,7 @@ const MenuForm = () => {
                 />
               </div>
             </div>
-            <div className="p-lg overflow-y-auto flex-1 bg-surface-container-lowest grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-md">
+            <div className="p-sm sm:p-lg overflow-y-auto flex-1 bg-surface-container-lowest grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2 sm:gap-md">
               {filteredIcons.length > 0 ? (
                 filteredIcons.map(iconName => {
                   const IconComp = Icons[iconName];

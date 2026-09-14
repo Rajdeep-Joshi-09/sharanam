@@ -16,17 +16,24 @@ const Sidebar = ({ isOpen, toggleSidebar, menus = [] }) => {
       {/* Mobile overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-on-surface/50 z-20 lg:hidden"
+          className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40 lg:hidden"
           onClick={toggleSidebar}
         ></div>
       )}
       
       {/* Sidebar Content */}
-      <aside className={`fixed top-0 left-0 h-full w-64 bg-surface-container-lowest border-r border-[#E7E7E7] z-30 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} lg:static lg:w-64`}>
+      <aside className={`fixed top-0 left-0 h-full w-64 bg-surface-container-lowest border-r border-[#E7E7E7] z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} lg:static lg:w-64`}>
         
         {/* Logo */}
-        <div className="h-16 flex items-center px-lg border-b border-[#E7E7E7]">
-          <span className="font-headline-sm text-headline-sm font-bold text-primary">LuxCare</span>
+        <div className="h-16 flex items-center justify-between px-lg border-b border-[#E7E7E7]">
+          <span className="font-headline-sm text-headline-sm font-bold text-primary">Sharnam Clinic</span>
+          <button 
+            onClick={toggleSidebar}
+            className="lg:hidden text-on-surface-variant hover:text-primary p-1"
+            aria-label="Close sidebar"
+          >
+            <Icons.X size={20} />
+          </button>
         </div>
 
         {/* Navigation */}
@@ -35,12 +42,14 @@ const Sidebar = ({ isOpen, toggleSidebar, menus = [] }) => {
             const path = item.listPageRoute || '#';
             const isActive = location.pathname === path || (location.pathname.startsWith(path) && path !== '/admin');
             
-            // Render basic flat list for now. Submenus can be expanded here later.
             return (
               <Link 
                 key={item.id} 
                 to={path}
-                className={`flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md transition-colors ${isActive ? 'bg-primary-container text-on-primary' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
+                onClick={() => {
+                  if (isOpen) toggleSidebar();
+                }}
+                className={`flex items-center gap-sm px-md py-sm rounded-lg font-label-md text-label-md transition-colors ${isActive ? 'bg-primary-container text-on-primary font-semibold' : 'text-on-surface-variant hover:bg-surface-container hover:text-primary'}`}
               >
                 {renderIcon(item.icon)}
                 <span>{item.menuName}</span>
@@ -51,7 +60,7 @@ const Sidebar = ({ isOpen, toggleSidebar, menus = [] }) => {
 
         {/* Footer info in sidebar */}
         <div className="p-lg border-t border-[#E7E7E7]">
-          <p className="text-caption text-outline-variant">LuxCare Admin Panel</p>
+          <p className="text-caption text-outline-variant font-medium">Sharnam Admin Panel</p>
           <p className="text-caption text-outline-variant">v1.0.0</p>
         </div>
       </aside>

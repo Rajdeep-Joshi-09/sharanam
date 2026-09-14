@@ -117,7 +117,7 @@ const DoctorForm = () => {
         </h2>
       </div>
 
-      <div className="glass-card p-xl rounded-[24px]">
+      <div className="glass-card p-md sm:p-xl rounded-[16px] sm:rounded-[24px]">
         {error && (
           <div className="mb-lg p-md bg-error-container text-on-error-container rounded-lg font-body-md">
             {error}
@@ -280,7 +280,7 @@ const DoctorForm = () => {
             <button
               type="submit"
               disabled={saving}
-              className="flex items-center justify-center gap-sm bg-primary text-on-primary hover:bg-primary-container px-xl py-sm rounded-lg font-label-md transition-colors shadow-sm disabled:opacity-50"
+              className="w-full sm:w-auto flex items-center justify-center gap-sm bg-primary text-on-primary hover:bg-primary-container px-xl py-sm rounded-lg font-label-md transition-colors shadow-sm disabled:opacity-50 min-h-[42px]"
             >
               <Save size={18} />
               {saving ? 'Saving...' : 'Save Doctor'}

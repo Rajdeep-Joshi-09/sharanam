@@ -86,7 +86,7 @@ const ProtectedLayout = () => {
         <Header toggleSidebar={toggleSidebar} menus={menus} />
 
         {/* Dynamic Page Content */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-surface p-md lg:p-xl relative">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-surface p-3 sm:p-6 lg:p-8 relative">
           
           {/* Subtle Background Elements (matching theme) */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -111,9 +111,9 @@ const ProtectedLayout = () => {
         </main>
         
         {/* Footer */}
-        <footer className="bg-inverse-surface w-full flex justify-between items-center px-lg py-md text-surface-bright mt-auto">
+        <footer className="bg-inverse-surface w-full flex flex-col sm:flex-row justify-between items-center px-md sm:px-lg py-md text-surface-bright mt-auto gap-2 text-center sm:text-left">
            <div className="font-caption text-caption text-outline-variant">
-             © 2024 LuxCare Healthcare. All rights reserved.
+             © Sharnam Clinic. All rights reserved.
            </div>
            <div className="flex gap-md font-caption text-caption text-outline-variant">
              <a href="#" className="hover:text-surface-bright transition-colors">Privacy</a>

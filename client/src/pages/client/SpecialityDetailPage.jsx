@@ -90,7 +90,7 @@ const SpecialityDetailPage = () => {
       </section>
 
       {/* Specialty Overview */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div className="relative group reveal">
           <div className="absolute inset-0 bg-[#ac2b2e]/5 rounded-[24px] -rotate-3 scale-105 group-hover:rotate-0 transition-transform duration-700" />
           <div className="relative w-full aspect-[4/3] rounded-[24px] shadow-lg border border-[#e0bfbc]/30 bg-gray-100 flex items-center justify-center">
@@ -105,10 +105,10 @@ const SpecialityDetailPage = () => {
         </div>
         <div className="space-y-8 reveal" style={{ transitionDelay: '200ms' }}>
           <div className="space-y-4">
-            <h2 className="font-['Playfair_Display'] text-[32px] font-semibold text-[#ac2b2e]">{data.treatmentType?.treatType || 'Specialized Care'}</h2>
-            <p className="font-['Inter'] text-[16px] text-[#59413f] leading-relaxed">{data.description}</p>
+            <h2 className="font-['Playfair_Display'] text-[28px] sm:text-[32px] font-semibold text-[#ac2b2e]">{data.treatmentType?.treatType || 'Specialized Care'}</h2>
+            <p className="font-['Inter'] text-[15px] sm:text-[16px] text-[#59413f] leading-relaxed">{data.description}</p>
           </div>
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-2">
               <span className="font-['Inter'] text-[14px] font-semibold text-[#ac2b2e] uppercase tracking-wider">Expertise</span>
               <ul className="space-y-1 font-['Inter'] text-[16px]">

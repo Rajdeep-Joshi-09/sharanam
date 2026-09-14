@@ -207,9 +207,9 @@ const AboutPage = () => {
       </section>
 
       {/* 4. Clinic Stats */}
-      <section className="py-16 max-w-7xl mx-auto px-6">
-        <div className="bg-gradient-to-r from-[#2c7a94] to-[#1e576b] text-white rounded-[32px] p-10 md:p-14 shadow-xl reveal">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="bg-gradient-to-r from-[#2c7a94] to-[#1e576b] text-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 md:p-14 shadow-xl reveal">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
             {clinicStats.map((stat) => (
               <div key={stat.label} className="space-y-2">
                 <span className="font-['Playfair_Display'] text-[40px] sm:text-[52px] font-bold block leading-none">

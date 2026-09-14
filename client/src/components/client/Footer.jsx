@@ -3,8 +3,8 @@ import ClinicLogo from './ClinicLogo';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1f2937] text-white w-full pt-16 pb-8 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-[#1f2937] text-white w-full pt-12 sm:pt-16 pb-8 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
         {/* Brand Column */}
         <div className="space-y-4">
           <div className="bg-white/95 p-3 rounded-2xl inline-block shadow-sm">
@@ -100,7 +100,7 @@ const Footer = () => {
 
           <div className="pt-2">
             <a
-              href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1274051,17z"
+              href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1248302,17z/data=!3m1!4b1!4m6!3m5!1s0x395fc7cb2ccf26cb:0xae495116baa823f1!8m2!3d22.2903243!4d73.1274051!16s%2Fg%2F11z6vvg6rx"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#2c7a94] text-white w-full py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#236378] transition-all shadow-md"

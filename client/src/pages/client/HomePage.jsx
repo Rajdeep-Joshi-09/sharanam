@@ -25,38 +25,38 @@ const HomePage = () => {
   return (
     <div ref={pageRef} className="bg-[#fff8f7] min-h-screen text-[#1f2937] pb-16">
       {/* 1. HERO SECTION (Home-only content) */}
-      <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-white via-[#fff8f7] to-[#fcf4f2] border-b border-[#e5d8d6]">
+      <section className="relative overflow-hidden pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-white via-[#fff8f7] to-[#fcf4f2] border-b border-[#e5d8d6]">
         {/* Background Decorative Blur Blobs */}
         <div className="absolute top-10 right-10 w-96 h-96 bg-[#fcebeb] rounded-full blur-3xl opacity-60 pointer-events-none" />
         <div className="absolute bottom-5 left-10 w-80 h-80 bg-[#e6f4f8] rounded-full blur-3xl opacity-60 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6 reveal active">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcebeb] text-[#cc3b38] font-['Inter'] text-[13px] font-bold uppercase tracking-wider">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 reveal active">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#fcebeb] text-[#cc3b38] font-['Inter'] text-[12px] sm:text-[13px] font-bold uppercase tracking-wider">
               <span className="w-2 h-2 rounded-full bg-[#cc3b38] animate-pulse" />
               Welcome to Sharnam Homeopathy & Wellness Clinic
             </span>
 
-            <h1 className="font-['Playfair_Display'] text-[38px] sm:text-[50px] lg:text-[58px] font-extrabold text-[#1f2937] leading-[1.15] tracking-tight">
+            <h1 className="font-['Playfair_Display'] text-[30px] sm:text-[48px] lg:text-[58px] font-extrabold text-[#1f2937] leading-[1.15] tracking-tight">
               Holistic Healing for <br className="hidden sm:block" />
               <span className="text-[#cc3b38] underline decoration-[#fcebeb] underline-offset-8">Mind, Body & Soul</span>
             </h1>
 
-            <p className="font-['Inter'] text-[17px] sm:text-[19px] text-[#4b5563] leading-relaxed max-w-2xl font-normal">
+            <p className="font-['Inter'] text-[15px] sm:text-[18px] text-[#4b5563] leading-relaxed max-w-2xl font-normal">
               Empowering your body’s natural ability to heal with safe, constitutional homeopathic treatments tailored by experienced practitioners. Experience gentle, root-cause care for long-lasting health.
             </p>
 
-            <div className="pt-4 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
               <Link
                 to="/book-appointment"
-                className="bg-[#cc3b38] text-white px-7 py-3.5 rounded-xl font-['Inter'] text-[15px] font-semibold shadow-lg hover:bg-[#b52f2c] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2"
+                className="bg-[#cc3b38] text-white px-6 py-3.5 rounded-xl font-['Inter'] text-[14px] sm:text-[15px] font-semibold shadow-lg hover:bg-[#b52f2c] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 text-center"
               >
                 <span className="material-symbols-outlined text-[20px]">calendar_month</span>
                 Book Appointment Today
               </Link>
               <Link
                 to="/services"
-                className="bg-white border-2 border-[#2c7a94] text-[#2c7a94] px-7 py-3.5 rounded-xl font-['Inter'] text-[15px] font-semibold shadow-sm hover:bg-[#e6f4f8] transition-all flex items-center gap-2"
+                className="bg-white border-2 border-[#2c7a94] text-[#2c7a94] px-6 py-3.5 rounded-xl font-['Inter'] text-[14px] sm:text-[15px] font-semibold shadow-sm hover:bg-[#e6f4f8] transition-all flex items-center justify-center gap-2 text-center"
               >
                 Explore Services
                 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -64,18 +64,18 @@ const HomePage = () => {
             </div>
 
             {/* Quick Trust Badges */}
-            <div className="pt-6 border-t border-gray-200/80 grid grid-cols-3 gap-4 font-['Inter'] text-center sm:text-left">
+            <div className="pt-5 border-t border-gray-200/80 grid grid-cols-3 gap-2 sm:gap-4 font-['Inter'] text-center sm:text-left">
               <div>
-                <span className="block text-[22px] font-bold text-[#1f2937]">10+ Years</span>
-                <span className="text-[13px] text-[#6b7280]">Clinical Experience</span>
+                <span className="block text-[18px] sm:text-[22px] font-bold text-[#1f2937]">10+ Years</span>
+                <span className="text-[11px] sm:text-[13px] text-[#6b7280]">Experience</span>
               </div>
               <div>
-                <span className="block text-[22px] font-bold text-[#cc3b38]">5,000+</span>
-                <span className="text-[13px] text-[#6b7280]">Patients Healed</span>
+                <span className="block text-[18px] sm:text-[22px] font-bold text-[#cc3b38]">5,000+</span>
+                <span className="text-[11px] sm:text-[13px] text-[#6b7280]">Patients</span>
               </div>
               <div>
-                <span className="block text-[22px] font-bold text-[#2c7a94]">100% Safe</span>
-                <span className="text-[13px] text-[#6b7280]">Natural Remedies</span>
+                <span className="block text-[18px] sm:text-[22px] font-bold text-[#2c7a94]">100% Safe</span>
+                <span className="text-[11px] sm:text-[13px] text-[#6b7280]">Remedies</span>
               </div>
             </div>
           </div>

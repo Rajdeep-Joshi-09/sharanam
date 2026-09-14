@@ -52,22 +52,22 @@ const DataTable = ({ columns, data, exportFileName = 'data_export' }) => {
   };
 
   return (
-    <div className="glass-card rounded-[24px] overflow-hidden flex flex-col h-full">
+    <div className="glass-card rounded-[16px] sm:rounded-[24px] overflow-hidden flex flex-col h-full">
       {/* Table Toolbar */}
-      <div className="p-lg flex flex-col sm:flex-row justify-between items-center gap-md border-b border-[#E7E7E7]">
-        <div className="relative w-full sm:w-[350px] md:w-[400px]">
-          <Search size={20} className="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" />
+      <div className="p-sm sm:p-lg flex flex-col sm:flex-row justify-between items-center gap-sm sm:gap-md border-b border-[#E7E7E7]">
+        <div className="relative w-full sm:w-[300px] md:w-[380px]">
+          <Search size={18} className="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" />
           <input
             type="text"
             placeholder="Search all columns..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-surface-container-lowest border border-[#E7E7E7] rounded-lg pl-[44px] pr-md py-sm text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors min-h-[42px]"
+            className="w-full bg-surface-container-lowest border border-[#E7E7E7] rounded-lg pl-[40px] pr-md py-sm text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors min-h-[42px]"
           />
         </div>
         <button
           onClick={exportToExcel}
-          className="w-full sm:w-auto flex items-center justify-center gap-sm bg-primary text-on-primary hover:bg-primary-container font-label-md px-md py-sm rounded-lg transition-colors"
+          className="w-full sm:w-auto flex items-center justify-center gap-sm bg-primary text-on-primary hover:bg-primary-container font-label-md px-md py-sm rounded-lg transition-colors min-h-[42px]"
         >
           <Download size={18} />
           Export to Excel
@@ -75,7 +75,7 @@ const DataTable = ({ columns, data, exportFileName = 'data_export' }) => {
       </div>
 
       {/* Table Wrapper for horizontal scroll */}
-      <div className="overflow-x-auto flex-1">
+      <div className="overflow-x-auto touch-scroll-x flex-1">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-surface-container border-b border-[#E7E7E7]">

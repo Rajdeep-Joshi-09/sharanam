@@ -9,11 +9,16 @@ const HealthInfoPage = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('active')),
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
-    pageRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    const elements = pageRef.current?.querySelectorAll('.reveal');
+    elements?.forEach((el) => {
+      observer.observe(el);
+      // Immediately activate filtered cards so they don't remain invisible
+      el.classList.add('active');
+    });
     return () => observer.disconnect();
-  }, []);
+  }, [selectedCategory, searchQuery]);
 
   const diseaseLibrary = [
     {
@@ -202,9 +207,16 @@ const HealthInfoPage = () => {
 
   const filteredDiseases = diseaseLibrary.filter((item) => {
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-    const matchesQuery = item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.shortSummary.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesQuery;
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return matchesCategory;
+
+    const matchesTitle = item.title.toLowerCase().includes(q);
+    const matchesSummary = item.shortSummary.toLowerCase().includes(q);
+    const matchesSymptoms = item.symptoms.some((s) => s.toLowerCase().includes(q));
+    const matchesCauses = item.causes.some((c) => c.toLowerCase().includes(q));
+    const matchesPrevention = item.prevention.some((p) => p.toLowerCase().includes(q));
+
+    return matchesCategory && (matchesTitle || matchesSummary || matchesSymptoms || matchesCauses || matchesPrevention);
   });
 
   return (
@@ -256,9 +268,9 @@ const HealthInfoPage = () => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl font-['Inter'] text-[13px] font-semibold transition-all ${
+                className={`px-4 py-2 rounded-xl font-['Inter'] text-[13px] font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-[#2c7a94] text-white'
+                    ? 'bg-[#2c7a94] text-white shadow-sm'
                     : 'bg-[#faf7f5] text-[#4b5563] hover:bg-gray-100'
                 }`}
               >
@@ -268,17 +280,26 @@ const HealthInfoPage = () => {
           </div>
 
           {/* Search Box */}
-          <div className="relative w-full md:w-72">
+          <div className="relative w-full md:w-80">
             <input
               type="text"
               placeholder="Search diseases or symptoms..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl pl-10 pr-4 py-2 font-['Inter'] text-[14px] text-[#1f2937] focus:outline-none focus:border-[#cc3b38]"
+              className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl pl-10 pr-10 py-2.5 font-['Inter'] text-[14px] text-[#1f2937] focus:outline-none focus:border-[#cc3b38]"
             />
-            <span className="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-[18px]">
+            <span className="material-symbols-outlined absolute left-3 top-3 text-gray-400 text-[18px]">
               search
             </span>
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 p-0.5"
+                title="Clear search"
+              >
+                <span className="material-symbols-outlined text-[18px]">close</span>
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -286,96 +307,119 @@ const HealthInfoPage = () => {
       {/* Disease Cards List */}
       <section className="max-w-7xl mx-auto px-6 py-8">
         <div className="space-y-10">
-          {filteredDiseases.map((disease, idx) => (
-            <div
-              key={disease.id}
-              className="bg-white rounded-[32px] p-8 md:p-10 border border-gray-200 shadow-md reveal space-y-6"
-              style={{ transitionDelay: `${(idx % 3) * 100}ms` }}
-            >
-              {/* Header */}
-              <div className="flex items-center gap-4 border-b border-gray-100 pb-6">
-                <div className="w-14 h-14 rounded-2xl bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-[32px]">{disease.icon}</span>
+          {filteredDiseases.length > 0 ? (
+            filteredDiseases.map((disease, idx) => (
+              <div
+                key={disease.id}
+                className="bg-white rounded-[32px] p-8 md:p-10 border border-gray-200 shadow-md reveal active space-y-6"
+                style={{ transitionDelay: `${(idx % 3) * 100}ms` }}
+              >
+                {/* Header */}
+                <div className="flex items-center gap-4 border-b border-gray-100 pb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[32px]">{disease.icon}</span>
+                  </div>
+                  <div>
+                    <span className="inline-block px-3 py-0.5 bg-[#e6f4f8] text-[#2c7a94] rounded-full font-['Inter'] text-[12px] font-bold uppercase tracking-wider mb-1">
+                      {disease.category} Condition
+                    </span>
+                    <h2 className="font-['Playfair_Display'] text-[26px] sm:text-[30px] font-bold text-[#1f2937]">
+                      {disease.title}
+                    </h2>
+                    <p className="font-['Inter'] text-[15px] text-[#6b7280]">
+                      {disease.shortSummary}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <span className="inline-block px-3 py-0.5 bg-[#e6f4f8] text-[#2c7a94] rounded-full font-['Inter'] text-[12px] font-bold uppercase tracking-wider mb-1">
-                    {disease.category} Condition
-                  </span>
-                  <h2 className="font-['Playfair_Display'] text-[26px] sm:text-[30px] font-bold text-[#1f2937]">
-                    {disease.title}
-                  </h2>
-                  <p className="font-['Inter'] text-[15px] text-[#6b7280]">
-                    {disease.shortSummary}
-                  </p>
+
+                {/* Grid of Symptoms, Causes, Prevention */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Symptoms */}
+                  <div className="bg-[#faf7f5] p-5 rounded-2xl border border-gray-100">
+                    <h4 className="font-['Inter'] text-[14px] font-bold text-[#cc3b38] uppercase tracking-wider mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px]">warning</span>
+                      Common Symptoms
+                    </h4>
+                    <ul className="space-y-2 font-['Inter'] text-[13px] text-[#4b5563]">
+                      {disease.symptoms.map((s) => (
+                        <li key={s} className="flex items-start gap-2">
+                          <span className="text-[#cc3b38] font-bold">•</span>
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Root Causes */}
+                  <div className="bg-[#faf7f5] p-5 rounded-2xl border border-gray-100">
+                    <h4 className="font-['Inter'] text-[14px] font-bold text-[#2c7a94] uppercase tracking-wider mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px]">biotech</span>
+                      Key Causes & Triggers
+                    </h4>
+                    <ul className="space-y-2 font-['Inter'] text-[13px] text-[#4b5563]">
+                      {disease.causes.map((c) => (
+                        <li key={c} className="flex items-start gap-2">
+                          <span className="text-[#2c7a94] font-bold">•</span>
+                          <span>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Prevention Tips */}
+                  <div className="bg-[#faf7f5] p-5 rounded-2xl border border-gray-100">
+                    <h4 className="font-['Inter'] text-[14px] font-bold text-[#10b981] uppercase tracking-wider mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px]">health_and_safety</span>
+                      Prevention & Self-Care
+                    </h4>
+                    <ul className="space-y-2 font-['Inter'] text-[13px] text-[#4b5563]">
+                      {disease.prevention.map((p) => (
+                        <li key={p} className="flex items-start gap-2">
+                          <span className="text-[#10b981] font-bold">•</span>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* When to see doctor & CTA */}
+                <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="font-['Inter'] text-[13px] text-[#1f2937]">
+                    <strong className="text-[#cc3b38]">When to see a doctor:</strong> {disease.whenToSeeDoctor}
+                  </div>
+                  <Link
+                    to="/contact"
+                    className="bg-[#cc3b38] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#b52f2c] transition-all shrink-0 flex items-center gap-1.5"
+                  >
+                    Contact Us
+                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </Link>
                 </div>
               </div>
-
-              {/* Grid of Symptoms, Causes, Prevention */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Symptoms */}
-                <div className="bg-[#faf7f5] p-5 rounded-2xl border border-gray-100">
-                  <h4 className="font-['Inter'] text-[14px] font-bold text-[#cc3b38] uppercase tracking-wider mb-3 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[18px]">warning</span>
-                    Common Symptoms
-                  </h4>
-                  <ul className="space-y-2 font-['Inter'] text-[13px] text-[#4b5563]">
-                    {disease.symptoms.map((s) => (
-                      <li key={s} className="flex items-start gap-2">
-                        <span className="text-[#cc3b38] font-bold">•</span>
-                        <span>{s}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Root Causes */}
-                <div className="bg-[#faf7f5] p-5 rounded-2xl border border-gray-100">
-                  <h4 className="font-['Inter'] text-[14px] font-bold text-[#2c7a94] uppercase tracking-wider mb-3 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[18px]">biotech</span>
-                    Key Causes & Triggers
-                  </h4>
-                  <ul className="space-y-2 font-['Inter'] text-[13px] text-[#4b5563]">
-                    {disease.causes.map((c) => (
-                      <li key={c} className="flex items-start gap-2">
-                        <span className="text-[#2c7a94] font-bold">•</span>
-                        <span>{c}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Prevention Tips */}
-                <div className="bg-[#faf7f5] p-5 rounded-2xl border border-gray-100">
-                  <h4 className="font-['Inter'] text-[14px] font-bold text-[#10b981] uppercase tracking-wider mb-3 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[18px]">health_and_safety</span>
-                    Prevention & Self-Care
-                  </h4>
-                  <ul className="space-y-2 font-['Inter'] text-[13px] text-[#4b5563]">
-                    {disease.prevention.map((p) => (
-                      <li key={p} className="flex items-start gap-2">
-                        <span className="text-[#10b981] font-bold">•</span>
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            ))
+          ) : (
+            <div className="bg-white rounded-[32px] p-10 sm:p-14 border border-gray-200 shadow-md text-center space-y-4 reveal active">
+              <div className="w-16 h-16 rounded-full bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center mx-auto">
+                <span className="material-symbols-outlined text-[32px]">search_off</span>
               </div>
-
-              {/* When to see doctor & CTA */}
-              <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="font-['Inter'] text-[13px] text-[#1f2937]">
-                  <strong className="text-[#cc3b38]">When to see a doctor:</strong> {disease.whenToSeeDoctor}
-                </div>
-                <Link
-                  to="/contact"
-                  className="bg-[#cc3b38] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#b52f2c] transition-all shrink-0 flex items-center gap-1.5"
-                >
-                  Contact Us
-                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </Link>
-              </div>
+              <h3 className="font-['Playfair_Display'] text-[24px] font-bold text-[#1f2937]">
+                No Matching Health Conditions Found
+              </h3>
+              <p className="font-['Inter'] text-[15px] text-[#6b7280] max-w-md mx-auto">
+                We couldn't find any health guide matching your current filter. Try searching for a different symptom or reset your search.
+              </p>
+              <button
+                onClick={() => {
+                  setSelectedCategory('all');
+                  setSearchQuery('');
+                }}
+                className="bg-[#2c7a94] text-white px-6 py-2.5 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#236378] transition-all shadow-md cursor-pointer"
+              >
+                Reset Category & Search Filters
+              </button>
             </div>
-          ))}
+          )}
         </div>
       </section>
     </div>

@@ -1,10 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 const ContactPage = () => {
   const pageRef = useRef(null);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: 'General Consultation Inquiry', message: '' });
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    subject: 'General Inquiry',
+    message: '',
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -17,228 +24,244 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    setIsSubmitting(true);
     setTimeout(() => {
-      toast.success('Thank you for contacting Sharnam Clinic! We will respond shortly.');
-      setFormData({ name: '', email: '', phone: '', subject: 'General Consultation Inquiry', message: '' });
-      setLoading(false);
+      toast.success('Thank you for contacting Sharnam Clinic! We will get back to you shortly.');
+      setIsSubmitting(false);
+      setForm({
+        name: '',
+        phone: '',
+        email: '',
+        subject: 'General Inquiry',
+        message: '',
+      });
     }, 600);
   };
 
   return (
-    <div ref={pageRef} className="bg-[#faf7f5] pb-16">
-      {/* Hero Header */}
+    <div ref={pageRef} className="bg-[#faf7f5] pb-20 text-[#1f2937]">
+      {/* Header Banner */}
       <header className="bg-white py-14 border-b border-gray-200 px-6">
-        <div className="max-w-7xl mx-auto text-center reveal active">
+        <div className="max-w-4xl mx-auto text-center reveal active">
           <span className="text-[#cc3b38] font-bold font-['Inter'] text-[13px] tracking-widest uppercase mb-2 block">
-            Sharnam Clinic Location & Contact
+            Get In Touch • Sharnam Clinic
           </span>
-          <h1 className="font-['Playfair_Display'] text-[34px] md:text-[48px] font-bold text-[#1f2937] mb-4">
-            Contact & Directions
+          <h1 className="font-['Playfair_Display'] text-[36px] sm:text-[48px] font-bold text-[#1f2937] mb-3">
+            Contact Us & Clinic Location
           </h1>
-          <p className="font-['Inter'] text-[16px] md:text-[18px] text-[#4b5563] max-w-2xl mx-auto leading-relaxed">
-            Get in touch with <strong className="text-[#1f2937]">Dr. Dhairya Urmish Mehta</strong> or visit our clinic at Samanway Westfields, Vadodara.
+          <p className="font-['Inter'] text-[16px] sm:text-[18px] text-[#4b5563] leading-relaxed">
+            We are here to answer your questions and assist with appointments.
           </p>
+
+          {/* SHORT LINE WITH LINK TO APPOINTMENT PAGE FOR TIMINGS (STRICT RULE) */}
+          <div className="mt-4 inline-flex items-center gap-2 bg-[#fcebeb] text-[#cc3b38] px-5 py-2 rounded-full font-['Inter'] text-[14px] font-semibold">
+            <span className="material-symbols-outlined text-[18px]">schedule</span>
+            <span>Looking for clinic hours?</span>
+            <Link to="/book-appointment" className="underline font-bold hover:text-[#b52f2c]">
+              See our timings on the Appointment page →
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* Main Contact Details & Form Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        {/* Left: Contact Info Cards */}
-        <div className="lg:col-span-5 space-y-6 reveal active">
-          {/* Address */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#cc3b38]/40 transition-all">
-            <div className="bg-[#fcebeb] text-[#cc3b38] p-3.5 rounded-xl shrink-0">
-              <span className="material-symbols-outlined text-[24px]">location_on</span>
-            </div>
-            <div>
-              <h3 className="font-['Inter'] text-[13px] font-bold text-[#cc3b38] uppercase tracking-wider mb-1">
-                Clinic Address
-              </h3>
-              <p className="font-['Playfair_Display'] text-[18px] font-bold text-[#1f2937] leading-snug">
-                Sharnam Clinic
-              </p>
-              <p className="font-['Inter'] text-[14px] text-[#4b5563] mt-1 leading-relaxed">
-                Ground Floor, Shop No.: 46, Samanway Westfields, TP-2, Vasna - Bhayli Main Rd, opp. Rajpath Complex, Bhayli, Vadodara, Gujarat 391410
-              </p>
+      {/* Main Grid: Contact Info & Contact Form */}
+      <section className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Contact Basics Column */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-white p-8 rounded-[32px] border border-gray-200 shadow-md reveal space-y-6">
+              <h2 className="font-['Playfair_Display'] text-[26px] font-bold text-[#1f2937] border-b border-gray-100 pb-4">
+                Clinic Details
+              </h2>
+
+              <div className="space-y-5 font-['Inter'] text-[15px]">
+                {/* Address */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[24px]">location_on</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#1f2937] text-[16px] mb-1">Clinic Address</h4>
+                    <p className="text-[#4b5563] leading-relaxed">
+                      GF/46, Samanway Westfields, TP-2, Vasna - Bhayli Main Rd, Opp. Rajpath Complex, Bhayli, Vadodara, Gujarat 391410
+                    </p>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#e6f4f8] text-[#2c7a94] flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[24px]">call</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#1f2937] text-[16px] mb-1">Phone & WhatsApp</h4>
+                    <p className="text-[#4b5563]">
+                      <a href="tel:+916355548616" className="text-[#cc3b38] font-bold hover:underline">
+                        +91 6355 548 616
+                      </a>
+                    </p>
+                    <p className="text-[13px] text-gray-500 mt-0.5">Available during OPD consultation hours</p>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[24px]">mail</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#1f2937] text-[16px] mb-1">Email Inquiry</h4>
+                    <p className="text-[#4b5563]">
+                      <a href="mailto:dhairyam30@gmail.com" className="hover:underline">
+                        dhairyam30@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct Appointment Link Box */}
+              <div className="pt-4 border-t border-gray-100 bg-[#faf7f5] p-5 rounded-2xl">
+                <p className="font-['Inter'] text-[14px] text-[#4b5563] mb-3">
+                  Want to schedule a consultation with Dr. Dhairya Mehta?
+                </p>
+                <Link
+                  to="/book-appointment"
+                  className="w-full bg-[#cc3b38] text-white py-3 px-4 rounded-xl font-['Inter'] text-[14px] font-semibold text-center hover:bg-[#b52f2c] transition-all shadow-md block"
+                >
+                  Go to Appointment Booking & Schedule →
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Phone & Hotline */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#2c7a94]/40 transition-all">
-            <div className="bg-[#e6f4f8] text-[#2c7a94] p-3.5 rounded-xl shrink-0">
-              <span className="material-symbols-outlined text-[24px]">call</span>
-            </div>
-            <div>
-              <h3 className="font-['Inter'] text-[13px] font-bold text-[#2c7a94] uppercase tracking-wider mb-1">
-                Phone Number
-              </h3>
-              <a href="tel:+916355548616" className="font-['Playfair_Display'] text-[22px] font-bold text-[#1f2937] hover:text-[#cc3b38] transition-colors block">
-                +91 6355 548 616
-              </a>
-              <p className="font-['Inter'] text-[13px] text-[#4b5563] mt-0.5">
-                Appointments & Inquiries
+          {/* Contact Form Column */}
+          <div className="lg:col-span-7">
+            <div className="bg-white p-8 md:p-10 rounded-[32px] border border-gray-200 shadow-md reveal">
+              <h2 className="font-['Playfair_Display'] text-[26px] font-bold text-[#1f2937] mb-2">
+                Send Us a Message
+              </h2>
+              <p className="font-['Inter'] text-[14px] text-[#4b5563] mb-6">
+                Fill out the form below and our clinic team will respond to your message promptly.
               </p>
-            </div>
-          </div>
 
-          {/* Email */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#2c7a94]/40 transition-all">
-            <div className="bg-[#e6f4f8] text-[#2c7a94] p-3.5 rounded-xl shrink-0">
-              <span className="material-symbols-outlined text-[24px]">mail</span>
-            </div>
-            <div>
-              <h3 className="font-['Inter'] text-[13px] font-bold text-[#2c7a94] uppercase tracking-wider mb-1">
-                Email Address
-              </h3>
-              <a href="mailto:dhairyam30@gmail.com" className="font-['Playfair_Display'] text-[18px] font-semibold text-[#1f2937] hover:text-[#cc3b38] transition-colors block">
-                dhairyam30@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* Consultation Hours */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#cc3b38]/40 transition-all">
-            <div className="bg-[#fcebeb] text-[#cc3b38] p-3.5 rounded-xl shrink-0">
-              <span className="material-symbols-outlined text-[24px]">schedule</span>
-            </div>
-            <div>
-              <h3 className="font-['Inter'] text-[13px] font-bold text-[#cc3b38] uppercase tracking-wider mb-1">
-                Timings
-              </h3>
-              <p className="font-['Inter'] text-[15px] font-semibold text-[#1f2937]">
-                Monday to Saturday: 10:00 AM – 7:00 PM
-              </p>
-              <p className="font-['Inter'] text-[15px] font-semibold text-[#1f2937]">
-                Sunday: 10:00 AM – 2:00 PM
-              </p>
-              <span className="inline-block mt-2 text-[12px] font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
-                With Prior Appointment
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Message / Inquiry Form */}
-        <div className="lg:col-span-7 reveal active" style={{ transitionDelay: '150ms' }}>
-          <div className="bg-white p-8 md:p-10 rounded-[32px] border border-gray-200 shadow-lg">
-            <h2 className="font-['Playfair_Display'] text-[28px] font-bold text-[#1f2937] mb-2">
-              Send a Message
-            </h2>
-            <p className="font-['Inter'] text-[15px] text-[#4b5563] mb-6">
-              Have a question regarding homeopathic consultation or timings? Send us a message and Dr. Dhairya Mehta’s team will assist you.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-5 font-['Inter']">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-[13px] font-bold text-[#1f2937] mb-1.5">Full Name *</label>
+                  <label className="block font-['Inter'] text-[14px] font-bold text-[#1f2937] mb-1">
+                    Your Full Name *
+                  </label>
                   <input
                     type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#cc3b38] focus:ring-2 focus:ring-[#cc3b38]/10 transition-all text-[15px]"
-                    placeholder="Enter your name"
                     required
+                    placeholder="e.g. Rahul Sharma"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl px-4 py-3 font-['Inter'] text-[15px] focus:outline-none focus:border-[#cc3b38]"
                   />
                 </div>
-                <div>
-                  <label className="block text-[13px] font-bold text-[#1f2937] mb-1.5">Phone Number *</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#cc3b38] focus:ring-2 focus:ring-[#cc3b38]/10 transition-all text-[15px]"
-                    placeholder="+91 98765 43210"
-                    required
-                  />
-                </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-[13px] font-bold text-[#1f2937] mb-1.5">Email Address</label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#cc3b38] focus:ring-2 focus:ring-[#cc3b38]/10 transition-all text-[15px]"
-                    placeholder="yourname@example.com"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-['Inter'] text-[14px] font-bold text-[#1f2937] mb-1">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 98765 43210"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl px-4 py-3 font-['Inter'] text-[15px] focus:outline-none focus:border-[#cc3b38]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-['Inter'] text-[14px] font-bold text-[#1f2937] mb-1">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="rahul@example.com"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl px-4 py-3 font-['Inter'] text-[15px] focus:outline-none focus:border-[#cc3b38]"
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <label className="block text-[13px] font-bold text-[#1f2937] mb-1.5">Subject</label>
+                  <label className="block font-['Inter'] text-[14px] font-bold text-[#1f2937] mb-1">
+                    Subject
+                  </label>
                   <select
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#cc3b38] focus:ring-2 focus:ring-[#cc3b38]/10 transition-all text-[15px]"
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                    className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl px-4 py-3 font-['Inter'] text-[15px] focus:outline-none focus:border-[#cc3b38]"
                   >
-                    <option value="General Consultation Inquiry">General Consultation Inquiry</option>
-                    <option value="Skin & Hair Care">Skin & Hair Care</option>
-                    <option value="Allergies & Respiratory">Allergies & Respiratory</option>
-                    <option value="Digestive Health">Digestive Health</option>
-                    <option value="Stress & Anxiety">Stress & Anxiety</option>
-                    <option value="Women or Child Health">Women or Child Health</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Treatment Consultation">Treatment Consultation</option>
+                    <option value="Follow-Up Question">Follow-Up Question</option>
+                    <option value="Clinic Location & Parking">Clinic Location & Parking</option>
                   </select>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-[13px] font-bold text-[#1f2937] mb-1.5">Your Message *</label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#cc3b38] focus:ring-2 focus:ring-[#cc3b38]/10 transition-all text-[15px] resize-none"
-                  placeholder="Describe your health concern or questions..."
-                  required
-                />
-              </div>
+                <div>
+                  <label className="block font-['Inter'] text-[14px] font-bold text-[#1f2937] mb-1">
+                    Message *
+                  </label>
+                  <textarea
+                    rows={4}
+                    required
+                    placeholder="Write your message or inquiry here..."
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="w-full bg-[#faf7f5] border border-gray-200 rounded-xl px-4 py-3 font-['Inter'] text-[15px] focus:outline-none focus:border-[#cc3b38]"
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full md:w-auto bg-[#cc3b38] text-white px-8 py-3.5 rounded-xl text-[14px] font-bold shadow-md hover:bg-[#b52f2c] transition-all disabled:opacity-50"
-              >
-                {loading ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-[#2c7a94] text-white px-8 py-3.5 rounded-xl font-['Inter'] text-[15px] font-semibold hover:bg-[#236378] transition-all shadow-md w-full disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  <span className="material-symbols-outlined text-[18px]">send</span>
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Embedded Google Map Section */}
-      <section className="max-w-7xl mx-auto px-6 py-8">
-        <div className="bg-white p-6 md:p-8 rounded-[32px] border border-gray-200 shadow-md reveal">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-            <div>
-              <h2 className="font-['Playfair_Display'] text-[24px] font-bold text-[#1f2937]">
-                Sharnam Clinic Google Map Location
-              </h2>
-              <p className="font-['Inter'] text-[14px] text-[#4b5563]">
-                Ground Floor, Shop No: 46, Samanway Westfields, Vasna-Bhayli Main Road, Vadodara
-              </p>
-            </div>
+      <section className="max-w-7xl mx-auto px-6 pt-6">
+        <div className="bg-white rounded-[32px] p-6 border border-gray-200 shadow-md reveal">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-['Playfair_Display'] text-[22px] font-bold text-[#1f2937] flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#cc3b38]">map</span>
+              Find Us on Google Maps
+            </h3>
             <a
               href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1274051,17z"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#2c7a94] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#236378] transition-all shrink-0"
+              className="text-[#2c7a94] font-['Inter'] text-[13px] font-semibold hover:underline flex items-center gap-1"
             >
-              <span className="material-symbols-outlined text-[18px]">map</span>
               Open in Google Maps App
+              <span className="material-symbols-outlined text-[16px]">open_in_new</span>
             </a>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-gray-200 h-[400px]">
+          <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-gray-100">
             <iframe
-              title="Sharnam Clinic Google Map"
-              src="https://maps.google.com/maps?q=Sharnam+Clinic,+Samanway+Westfields,+Vasna-Bhayli+Main+Road,+Vadodara&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              title="Sharnam Clinic Google Map Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.684123456789!2d73.1274051!3d22.2903243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc88456789abc%3A0x123456789abcdef!2sSharnam%20Clinic!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>

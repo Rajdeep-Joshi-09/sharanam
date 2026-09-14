@@ -4,9 +4,12 @@ import ClinicLogo from './ClinicLogo';
 
 const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Dr. Dhairya Mehta', path: '/about' },
-  { label: 'Services & Specialities', path: '/specialities' },
-  { label: 'Contact & Location', path: '/contact' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Our Doctors', path: '/doctors' },
+  { label: 'Health Info', path: '/health-info' },
+  { label: 'Appointment', path: '/book-appointment' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 const Navbar = () => {
@@ -27,12 +30,12 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`font-['Inter'] text-[15px] font-medium tracking-[0.02em] transition-colors duration-200 ${
+              className={`font-['Inter'] text-[14px] xl:text-[15px] font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-200 ${
                 isActive(link.path)
                   ? 'text-[#cc3b38] font-bold border-b-2 border-[#cc3b38] pb-1'
                   : 'text-[#4b5563] hover:text-[#cc3b38]'

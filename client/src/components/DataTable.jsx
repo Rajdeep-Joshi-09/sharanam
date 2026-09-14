@@ -5,7 +5,7 @@ import { Download, Search, ChevronUp, ChevronDown } from 'lucide-react';
 const DataTable = ({ columns, data, exportFileName = 'data_export' }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
-  //working
+
   // Handle Sorting
   const handleSort = (key) => {
     let direction = 'asc';

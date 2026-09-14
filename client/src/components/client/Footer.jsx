@@ -25,37 +25,23 @@ const Footer = () => {
           <h4 className="text-white font-bold font-['Playfair_Display'] text-[18px] tracking-wide border-b border-gray-700 pb-2">
             Quick Links
           </h4>
-          <ul className="space-y-2.5 font-['Inter'] text-[15px]">
-            <li>
-              <Link to="/" className="text-gray-300 hover:text-[#cc3b38] transition-colors flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#2c7a94]">chevron_right</span>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="text-gray-300 hover:text-[#cc3b38] transition-colors flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#2c7a94]">chevron_right</span>
-                About Dr. Dhairya Mehta
-              </Link>
-            </li>
-            <li>
-              <Link to="/specialities" className="text-gray-300 hover:text-[#cc3b38] transition-colors flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#2c7a94]">chevron_right</span>
-                Services & Specialities
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="text-gray-300 hover:text-[#cc3b38] transition-colors flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#2c7a94]">chevron_right</span>
-                Contact & Clinic Location
-              </Link>
-            </li>
-            <li>
-              <Link to="/book-appointment" className="text-gray-300 hover:text-[#cc3b38] transition-colors flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#2c7a94]">chevron_right</span>
-                Book Appointment
-              </Link>
-            </li>
+          <ul className="space-y-2 font-['Inter'] text-[14px]">
+            {[
+              { label: 'Home', path: '/' },
+              { label: 'About Us', path: '/about' },
+              { label: 'Services', path: '/services' },
+              { label: 'Our Doctors', path: '/doctors' },
+              { label: 'Health Info', path: '/health-info' },
+              { label: 'Appointment', path: '/book-appointment' },
+              { label: 'Contact Us', path: '/contact' },
+            ].map((link) => (
+              <li key={link.path}>
+                <Link to={link.path} className="text-gray-300 hover:text-[#cc3b38] transition-colors flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px] text-[#2c7a94]">chevron_right</span>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 

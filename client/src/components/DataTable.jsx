@@ -6,7 +6,7 @@ const DataTable = ({ columns, data, exportFileName = 'data_export' }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
-  // Handle Sorting
+  // Handle Sorting using callback var
   const handleSort = (key) => {
     let direction = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -33,7 +33,7 @@ const DataTable = ({ columns, data, exportFileName = 'data_export' }) => {
       processData.sort((a, b) => {
         const aVal = a[sortConfig.key];
         const bVal = b[sortConfig.key];
-        
+
         if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
         if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
         return 0;

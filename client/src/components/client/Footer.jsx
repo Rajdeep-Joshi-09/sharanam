@@ -30,9 +30,7 @@ const Footer = () => {
               { label: 'Home', path: '/' },
               { label: 'About Us', path: '/about' },
               { label: 'Services', path: '/services' },
-              { label: 'Our Doctors', path: '/doctors' },
               { label: 'Health Info', path: '/health-info' },
-              { label: 'Appointment', path: '/book-appointment' },
               { label: 'Contact Us', path: '/contact' },
             ].map((link) => (
               <li key={link.path}>
@@ -100,10 +98,10 @@ const Footer = () => {
 
           <div className="pt-2">
             <a
-              href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1248302,17z/data=!3m1!4b1!4m6!3m5!1s0x395fc7cb2ccf26cb:0xae495116baa823f1!8m2!3d22.2903243!4d73.1274051!16s%2Fg%2F11z6vvg6rx"
+              href="https://maps.google.com/?q=Sharnam+Clinic,+Vasna+-+Bhayli+Main+Rd,+Vadodara"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#2c7a94] text-white w-full py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#236378] transition-all shadow-md"
+              className="inline-flex items-center justify-center gap-2 bg-[#2c7a94] text-white w-full py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#236378] transition-all shadow-md active:scale-95 cursor-pointer"
             >
               <span className="material-symbols-outlined text-[18px]">map</span>
               Open Location in Google Maps

@@ -241,10 +241,10 @@ const ServicesPage = () => {
                   Consultation required prior to medication
                 </span>
                 <Link
-                  to="/book-appointment"
+                  to="/contact"
                   className="bg-[#cc3b38] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#b52f2c] transition-all flex items-center gap-1.5"
                 >
-                  Book Service
+                  Inquire Service
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </Link>
               </div>
@@ -260,14 +260,14 @@ const ServicesPage = () => {
             Not Sure Which Treatment Is Right For You?
           </h3>
           <p className="font-['Inter'] text-[16px] text-gray-300 max-w-2xl mx-auto mb-6">
-            Schedule a detailed constitutional consultation with Dr. Dhairya Mehta to identify the root cause of your symptoms.
+            Get in touch with Dr. Dhairya Mehta to identify the root cause of your symptoms.
           </p>
           <Link
-            to="/book-appointment"
+            to="/contact"
             className="inline-flex items-center gap-2 bg-[#cc3b38] text-white px-7 py-3.5 rounded-xl font-['Inter'] text-[15px] font-semibold hover:bg-[#b52f2c] transition-all"
           >
-            <span className="material-symbols-outlined text-[20px]">calendar_month</span>
-            Schedule Consultation Now
+            <span className="material-symbols-outlined text-[20px]">call</span>
+            Contact Us Now
           </Link>
         </div>
       </section>

@@ -144,8 +144,8 @@ const SpecialityDetailPage = () => {
               <div className="font-['Inter'] text-[14px] font-semibold text-[#59413f]">In Patient Care</div>
             </div>
           </div>
-          <Link to="/book-appointment" className="inline-block bg-[#ac2b2e] text-white px-12 py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:shadow-lg transition-all active:scale-95">
-            Book Specialist Consultation
+          <Link to="/contact" className="inline-block bg-[#ac2b2e] text-white px-12 py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:shadow-lg transition-all active:scale-95">
+            Contact Us
           </Link>
         </div>
       </section>

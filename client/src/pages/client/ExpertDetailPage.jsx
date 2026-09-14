@@ -129,10 +129,10 @@ const ExpertDetailPage = () => {
 
             {/* CTA */}
             <Link
-              to="/book-appointment"
+              to="/contact"
               className="inline-block bg-[#D74A49] text-white px-10 py-4 rounded-xl font-['Inter'] text-[14px] font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
             >
-              Book Appointment with {doctor.name.split(' ')[1] || doctor.name}
+              Contact Us Today
             </Link>
           </div>
         </div>

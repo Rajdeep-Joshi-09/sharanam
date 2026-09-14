@@ -31,7 +31,7 @@ api.interceptors.response.use(
       localStorage.removeItem('user');
 
       // Define public routes that shouldn't redirect to login on 401
-      const publicRoutes = ['/', '/login', '/about', '/contact', '/book-appointment', '/experts', '/specialities'];
+      const publicRoutes = ['/', '/login', '/about', '/contact', '/experts', '/specialities'];
       const isPublicRoute = publicRoutes.some(route => window.location.pathname === route || window.location.pathname.startsWith(route + '/'));
 
       // Redirect to login page only if not on a public route

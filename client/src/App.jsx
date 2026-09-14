@@ -33,9 +33,7 @@ import AppointmentList from './pages/AppointmentList';
 import HomePage from './pages/client/HomePage';
 import AboutPage from './pages/client/AboutPage';
 import ServicesPage from './pages/client/ServicesPage';
-import DoctorsPage from './pages/client/DoctorsPage';
 import HealthInfoPage from './pages/client/HealthInfoPage';
-import BookAppointmentPage from './pages/client/BookAppointmentPage';
 import ContactPage from './pages/client/ContactPage';
 
 function App() {
@@ -57,10 +55,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/doctors" element={<DoctorsPage />} />
           <Route path="/health-info" element={<HealthInfoPage />} />
-          <Route path="/book-appointment" element={<BookAppointmentPage />} />
-          <Route path="/appointment" element={<BookAppointmentPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Route>
 

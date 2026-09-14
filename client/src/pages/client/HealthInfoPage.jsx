@@ -367,10 +367,10 @@ const HealthInfoPage = () => {
                   <strong className="text-[#cc3b38]">When to see a doctor:</strong> {disease.whenToSeeDoctor}
                 </div>
                 <Link
-                  to="/book-appointment"
+                  to="/contact"
                   className="bg-[#cc3b38] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#b52f2c] transition-all shrink-0 flex items-center gap-1.5"
                 >
-                  Book Consultation
+                  Contact Us
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </Link>
               </div>

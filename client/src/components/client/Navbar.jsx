@@ -6,10 +6,8 @@ const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
   { label: 'Services', path: '/services' },
-  { label: 'Our Doctors', path: '/doctors' },
   { label: 'Health Info', path: '/health-info' },
-  { label: 'Appointment', path: '/book-appointment' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Contact Us', path: '/contact' },
 ];
 
 const Navbar = () => {
@@ -30,8 +28,8 @@ const Navbar = () => {
             <ClinicLogo size="md" />
           </Link>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {/* Desktop Nav Links (Aligned to right side) */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 ml-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -49,21 +47,6 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-4">
-            <a
-              href="tel:+916355548616"
-              className="hidden sm:flex items-center gap-2 text-[#2c7a94] hover:text-[#1e576b] font-['Inter'] text-[14px] font-semibold transition-colors"
-            >
-              <span className="material-symbols-outlined text-[20px]">call</span>
-              +91 6355 548 616
-            </a>
-
-            <Link
-              to="/book-appointment"
-              className="bg-[#cc3b38] text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl font-['Inter'] text-[12px] sm:text-[14px] font-semibold shadow-md hover:bg-[#b52f2c] transition-all active:scale-95 text-center whitespace-nowrap"
-            >
-              Book Appointment
-            </Link>
-
             {/* Mobile Hamburger Button */}
             <button
               className="lg:hidden flex flex-col justify-center items-center gap-1.5 p-2 focus:outline-none min-w-[40px] min-h-[40px]"
@@ -110,13 +93,6 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="tel:+916355548616"
-              className="flex items-center gap-2 text-[#2c7a94] py-2.5 px-4 font-['Inter'] text-[15px] font-semibold sm:hidden border-t border-gray-100 pt-3"
-            >
-              <span className="material-symbols-outlined text-[20px]">call</span>
-              Call +91 6355 548 616
-            </a>
           </div>
         </div>
       </header>

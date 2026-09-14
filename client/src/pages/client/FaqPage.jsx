@@ -28,10 +28,10 @@ const FaqPage = () => {
       linkUrl: '/services',
     },
     {
-      q: 'What are the clinic OPD hours and appointment rules?',
-      a: 'To avoid long waiting times and ensure thorough case evaluation, consultations are conducted with prior appointment.',
-      linkText: 'Check full clinic timings and book your slot on the Appointment page',
-      linkUrl: '/book-appointment',
+      q: 'What are the clinic OPD hours and consultation details?',
+      a: 'Consultations are conducted with prior appointment to avoid long waiting times.',
+      linkText: 'Check clinic address and details on our Contact page',
+      linkUrl: '/contact',
     },
     {
       q: 'What specific conditions does Dr. Dhairya Mehta treat at Sharnam Clinic?',
@@ -42,8 +42,8 @@ const FaqPage = () => {
     {
       q: 'Should I stop taking my existing conventional medications when starting Homeopathy?',
       a: 'No. You should never stop your existing prescribed conventional medications abruptly. Dr. Dhairya Mehta will evaluate your health history during your consultation and advise a gradual, safe transition as your body responds to homeopathic healing.',
-      linkText: 'Meet our doctor & check qualifications',
-      linkUrl: '/doctors',
+      linkText: 'Learn about our clinic mission on the About page',
+      linkUrl: '/about',
     },
     {
       q: 'How long does a homeopathic treatment take to show results?',
@@ -54,8 +54,8 @@ const FaqPage = () => {
     {
       q: 'What dietary or lifestyle precautions are required during homeopathic treatment?',
       a: 'Generally, strong substances like mint, camphor, or raw onions should not be consumed immediately before or after taking remedies. Specific dietary guidelines are tailored during your personal consultation.',
-      linkText: 'Schedule a consultation today',
-      linkUrl: '/book-appointment',
+      linkText: 'Contact us today',
+      linkUrl: '/contact',
     },
     {
       q: 'Where is Sharnam Clinic located and how can I navigate there?',
@@ -141,18 +141,12 @@ const FaqPage = () => {
           <p className="font-['Inter'] text-[15px] text-[#4b5563] mb-6">
             Feel free to contact our clinic directly or book a personal consultation with Dr. Dhairya Mehta.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="pt-2 flex justify-center">
             <Link
               to="/contact"
-              className="bg-[#2c7a94] text-white px-6 py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#236378] transition-all"
+              className="bg-[#2c7a94] text-white px-8 py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#236378] transition-all"
             >
               Contact Us Directly
-            </Link>
-            <Link
-              to="/book-appointment"
-              className="bg-[#cc3b38] text-white px-6 py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#b52f2c] transition-all"
-            >
-              Book Appointment
             </Link>
           </div>
         </div>

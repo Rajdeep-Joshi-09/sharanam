@@ -110,11 +110,8 @@ const ExpertsPage = () => {
                 Our concierge team is available 24/7 to help match you with the perfect medical expert for your unique health requirements.
               </p>
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                <Link to="/book-appointment" className="w-full md:w-auto bg-[#D74A49] text-white px-12 py-5 rounded-full font-['Inter'] text-[14px] font-semibold text-lg hover:shadow-[0_10px_30px_rgba(215,74,73,0.3)] transition-all hover:-translate-y-1">
-                  Book Appointment
-                </Link>
-                <Link to="/contact" className="w-full md:w-auto bg-transparent border border-white/20 text-white px-12 py-5 rounded-full font-['Inter'] text-[14px] font-semibold text-lg hover:bg-white/10 transition-all">
-                  Speak to Concierge
+                <Link to="/contact" className="w-full md:w-auto bg-[#D74A49] text-white px-12 py-5 rounded-full font-['Inter'] text-[14px] font-semibold text-lg hover:shadow-[0_10px_30px_rgba(215,74,73,0.3)] transition-all hover:-translate-y-1">
+                  Contact Us Today
                 </Link>
               </div>
             </div>

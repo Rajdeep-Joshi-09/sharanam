@@ -48,11 +48,11 @@ const HomePage = () => {
 
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
               <Link
-                to="/book-appointment"
+                to="/contact"
                 className="bg-[#cc3b38] text-white px-6 py-3.5 rounded-xl font-['Inter'] text-[14px] sm:text-[15px] font-semibold shadow-lg hover:bg-[#b52f2c] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 text-center"
               >
-                <span className="material-symbols-outlined text-[20px]">calendar_month</span>
-                Book Appointment Today
+                <span className="material-symbols-outlined text-[20px]">call</span>
+                Contact Us Today
               </Link>
               <Link
                 to="/services"
@@ -126,7 +126,7 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Teaser 1: Explore Our Services */}
           <Link
             to="/services"
@@ -149,34 +149,11 @@ const HomePage = () => {
             </div>
           </Link>
 
-          {/* Teaser 2: Meet Our Doctors */}
-          <Link
-            to="/doctors"
-            className="group bg-white p-8 rounded-3xl border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-[#2c7a94] transition-all duration-300 flex flex-col justify-between reveal"
-            style={{ transitionDelay: '100ms' }}
-          >
-            <div>
-              <div className="w-14 h-14 rounded-2xl bg-[#e6f4f8] text-[#2c7a94] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-[30px]">groups</span>
-              </div>
-              <h3 className="font-['Playfair_Display'] text-[22px] font-bold text-[#1f2937] mb-3 group-hover:text-[#2c7a94] transition-colors">
-                Meet Our Doctors →
-              </h3>
-              <p className="font-['Inter'] text-[14px] text-[#4b5563] leading-relaxed">
-                Learn about Dr. Dhairya Mehta’s clinical experience, qualifications, and patient care philosophy.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-gray-100 flex items-center font-['Inter'] text-[14px] font-semibold text-[#2c7a94]">
-              View Doctor Profile
-              <span className="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </div>
-          </Link>
-
-          {/* Teaser 3: Health Info Library */}
+          {/* Teaser 2: Health Info Library */}
           <Link
             to="/health-info"
             className="group bg-white p-8 rounded-3xl border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-[#cc3b38] transition-all duration-300 flex flex-col justify-between reveal"
-            style={{ transitionDelay: '200ms' }}
+            style={{ transitionDelay: '100ms' }}
           >
             <div>
               <div className="w-14 h-14 rounded-2xl bg-[#fcebeb] text-[#cc3b38] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -195,11 +172,11 @@ const HomePage = () => {
             </div>
           </Link>
 
-          {/* Teaser 4: About Our Clinic */}
+          {/* Teaser 3: About Our Clinic */}
           <Link
             to="/about"
             className="group bg-white p-8 rounded-3xl border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-[#2c7a94] transition-all duration-300 flex flex-col justify-between reveal"
-            style={{ transitionDelay: '300ms' }}
+            style={{ transitionDelay: '200ms' }}
           >
             <div>
               <div className="w-14 h-14 rounded-2xl bg-[#e6f4f8] text-[#2c7a94] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -220,14 +197,14 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 3. CALL-TO-ACTION BANNER ("Book your appointment today" + button) */}
+      {/* 3. CALL-TO-ACTION BANNER */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 my-8">
         <div className="bg-gradient-to-r from-[#1f2937] via-[#2c3e50] to-[#1f2937] text-white rounded-[32px] p-8 sm:p-14 shadow-2xl relative overflow-hidden reveal">
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#cc3b38]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl space-y-6">
             <span className="inline-block px-3.5 py-1 bg-[#cc3b38] text-white text-[12px] font-bold uppercase tracking-wider rounded-full font-['Inter']">
-              Prior Appointment Required
+              Get In Touch
             </span>
 
             <h2 className="font-['Playfair_Display'] text-[32px] sm:text-[44px] font-bold leading-tight">
@@ -235,23 +212,16 @@ const HomePage = () => {
             </h2>
 
             <p className="font-['Inter'] text-[16px] sm:text-[18px] text-gray-300 leading-relaxed">
-              Book your appointment today with Dr. Dhairya Mehta for a comprehensive constitutional health assessment.
+              Contact Dr. Dhairya Mehta at Sharnam Clinic for a comprehensive constitutional health assessment.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
-                to="/book-appointment"
+                to="/contact"
                 className="bg-[#cc3b38] text-white px-8 py-4 rounded-xl font-['Inter'] text-[16px] font-semibold shadow-lg hover:bg-[#b52f2c] transition-all transform hover:scale-[1.02] flex items-center gap-2"
               >
-                <span className="material-symbols-outlined text-[22px]">event_available</span>
-                Book Your Appointment Today
-              </Link>
-              <Link
-                to="/contact"
-                className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-['Inter'] text-[16px] font-semibold hover:bg-white/20 transition-all flex items-center gap-2"
-              >
                 <span className="material-symbols-outlined text-[20px]">location_on</span>
-                Clinic Contact & Location
+                Contact Us & Clinic Location
               </Link>
             </div>
           </div>

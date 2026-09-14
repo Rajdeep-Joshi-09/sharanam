@@ -50,17 +50,8 @@ const ContactPage = () => {
             Contact Us & Clinic Location
           </h1>
           <p className="font-['Inter'] text-[16px] sm:text-[18px] text-[#4b5563] leading-relaxed">
-            We are here to answer your questions and assist with appointments.
+            We are here to answer your questions and assist with your health inquiries.
           </p>
-
-          {/* SHORT LINE WITH LINK TO APPOINTMENT PAGE FOR TIMINGS (STRICT RULE) */}
-          <div className="mt-4 inline-flex items-center gap-2 bg-[#fcebeb] text-[#cc3b38] px-5 py-2 rounded-full font-['Inter'] text-[14px] font-semibold">
-            <span className="material-symbols-outlined text-[18px]">schedule</span>
-            <span>Looking for clinic hours?</span>
-            <Link to="/book-appointment" className="underline font-bold hover:text-[#b52f2c]">
-              See our timings on the Appointment page →
-            </Link>
-          </div>
         </div>
       </header>
 
@@ -119,19 +110,6 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-
-              {/* Direct Appointment Link Box */}
-              <div className="pt-4 border-t border-gray-100 bg-[#faf7f5] p-5 rounded-2xl">
-                <p className="font-['Inter'] text-[14px] text-[#4b5563] mb-3">
-                  Want to schedule a consultation with Dr. Dhairya Mehta?
-                </p>
-                <Link
-                  to="/book-appointment"
-                  className="w-full bg-[#cc3b38] text-white py-3 px-4 rounded-xl font-['Inter'] text-[14px] font-semibold text-center hover:bg-[#b52f2c] transition-all shadow-md block"
-                >
-                  Go to Appointment Booking & Schedule →
-                </Link>
               </div>
             </div>
           </div>
@@ -242,7 +220,7 @@ const ContactPage = () => {
               Find Us on Google Maps
             </h3>
             <a
-              href="https://www.google.com/maps/place/Sharnam+Clinic/@22.2903243,73.1248302,17z/data=!3m1!4b1!4m6!3m5!1s0x395fc7cb2ccf26cb:0xae495116baa823f1!8m2!3d22.2903243!4d73.1274051!16s%2Fg%2F11z6vvg6rx"
+              href="https://maps.google.com/?q=Sharnam+Clinic,+Vasna+-+Bhayli+Main+Rd,+Vadodara"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#2c7a94] font-['Inter'] text-[13px] font-semibold hover:underline flex items-center gap-1 shrink-0"

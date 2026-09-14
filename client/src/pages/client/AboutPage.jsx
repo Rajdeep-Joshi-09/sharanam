@@ -93,11 +93,11 @@ const AboutPage = () => {
 
             <div className="pt-2 flex flex-wrap gap-4">
               <Link
-                to="/book-appointment"
+                to="/contact"
                 className="bg-[#cc3b38] text-white px-6 py-3 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#b52f2c] transition-all shadow-md flex items-center gap-2"
               >
-                <span className="material-symbols-outlined text-[18px]">calendar_month</span>
-                Book Appointment
+                <span className="material-symbols-outlined text-[18px]">call</span>
+                Contact Us
               </Link>
               <a
                 href="tel:+916355548616"

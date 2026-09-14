@@ -139,10 +139,10 @@ const SpecialitiesPage = () => {
 
                   <div className="pt-2">
                     <Link
-                      to="/book-appointment"
+                      to="/contact"
                       className="inline-flex items-center gap-2 bg-[#cc3b38] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#b52f2c] transition-colors"
                     >
-                      Book Consultation
+                      Contact Us
                       <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                     </Link>
                   </div>
@@ -169,21 +169,21 @@ const SpecialitiesPage = () => {
         </div>
       </section>
 
-      {/* Book Consult Footer CTA */}
+      {/* Contact Footer CTA */}
       <section className="max-w-7xl mx-auto px-6">
         <div className="bg-[#1f2937] text-white p-8 md:p-12 rounded-[32px] text-center space-y-4">
           <h3 className="font-['Playfair_Display'] text-[28px] font-bold">
             Have a Specific Symptom or Condition?
           </h3>
           <p className="font-['Inter'] text-[15px] text-gray-300 max-w-2xl mx-auto">
-            Book an appointment with Dr. Dhairya Mehta for a comprehensive homeopathic evaluation tailored to your exact medical history.
+            Contact Dr. Dhairya Mehta at Sharnam Clinic for a comprehensive homeopathic evaluation tailored to your exact medical history.
           </p>
           <div className="pt-2 flex justify-center gap-4">
             <Link
-              to="/book-appointment"
+              to="/contact"
               className="bg-[#cc3b38] text-white px-8 py-3 rounded-xl font-['Inter'] text-[14px] font-bold hover:bg-[#b52f2c] transition-colors"
             >
-              Book Appointment Now
+              Contact Us Now
             </Link>
           </div>
         </div>
